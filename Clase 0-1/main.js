@@ -67,7 +67,7 @@ let mascotaEdad = 5;
 console.log("Nuestro Perro " + mascota + "tiene " + mascotaEdad+ "años. " );
 
 //ahora:
-console.log(`Nuestro perro ${mascota} tiene ${mascotaEdad +1} años`);
+console.log(`Nuestro perro ${mascota} tiene ${mascotaEdad +1} años`);  
 
 //Declarativas:
 //1 paso, las declaramos
@@ -187,5 +187,11 @@ const homero = new Empleado ("Homero", 37, 7000);
 
 homero.despedir;
 homero.cobrarSalario;
+
+/////////////////////////////////////////////
+////////////////////////////////////////////
+///////////////////////////////////////////
+
+
 
 
