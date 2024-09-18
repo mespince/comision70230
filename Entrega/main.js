@@ -1,30 +1,33 @@
+/////////////////////////////////////////////
+////////////////////////////////////////////
+///////////////////////////////////////////
+
 class ProductManager {
     constructor() {
         this.products = [];
         this.nextId = 1; 
     }
 
-    addProduct(product) {
-        if (!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock) {
+    addProduct(title, description, price, img, code, stock) {
+        if (!title || !description || !price || !img || !code || !stock) {
             return { error: "Faltan datos papurri" }; 
         }
 
-        const existingProduct = this.products.find(p => p.code === product.code);
-        if (existingProduct) {
-            return { error: "Pa, no te confundas de codigo plis" }; 
+        if(this.products.some(item => item.code === code)){
+        console.log("ERROR PAPURRI REPETIMO EL CODIGO QUE PASO?");
+        return;
         }
 
         const newProduct = { 
             id: this.nextId,
-            title: product.title,
-            description: product.description,
-            price: product.price,
-            thumbnail: product.thumbnail,
-            code: product.code,
-            stock: product.stock
+            title: title,
+            description: description,
+            price: price,
+            img: img,
+            code: code,
+            stock: stock
         };
 
-        
         this.nextId++; 
         this.products.push(newProduct);
 
@@ -42,55 +45,42 @@ class ProductManager {
                 if (product) {
                     resolve(product);
                 } else {
-                    reject("Esto no esta");
+                    reject("Esto no está");
                 }
             }, 2000); 
         });
     }
 }
 
+// Testing
+
 const manager = new ProductManager();
 
-console.log(manager.addProduct({
-    title: "Baldur's Gate 3",
-    description: "GOTY",
-    price: 34.99,
-    thumbnail: "ruta/bg3.jpg",
-    code: "PROD001",
-    stock: 15
-}));
+// Agregar producto
+manager.addProduct("Producto Prueba", "Esto es una prueba", 200, "sin imagen", "abc123", 25);
 
-console.log(manager.addProduct({
-    title: "DLC - Digital Deluxe Edition",
-    description: "Cosméticos xD",
-    price: 5.49,
-    thumbnail: "ruta/DDE.jpg",
-    code: "PROD002",
-    stock: 50
-}));
-
-console.log(manager.addProduct({
-    title: "DLC - Toolkit Data",
-    description: "Pa'cer Mods",
-    price: 0,
-    thumbnail: "ruta/TD.jpg",
-    code: "PROD001", 
-    stock: 20
-}));
-
+// Mostrar todos los productos
 console.log("Todos los productos:", manager.getProducts());
 
+manager.addProduct("Producto Prueba", "Esto es una prueba", 200, "sin imagen", "abc123", 25);
+
+manager.addProduct( "Baldur's Gate 3", "GOTY", 34.99, "ruta/bg3.jpg", "PROD001", 15);
+manager.addProduct( "DLC - Digital Deluxe Edition", "Cosméticos xD", 5.49, "ruta/DDE.jpg", "PROD002",50);
+manager.addProduct( "DLC - Toolkit Data","Pa'cer Mods", 0, "ruta/TD.jpg","PROD003", 20);
+
+
+// Buscar producto por ID
 manager.getProductById(1)
     .then(product => console.log("Producto encontrado:", product))
     .catch(error => console.error("Error:", error));
 
+// Buscar un producto que no existe
 manager.getProductById(99)
     .then(product => console.log("Producto encontrado:", product))
     .catch(error => console.error("Error:", error));
+    
+console.log("Todos los productos:", manager.getProducts());
 
 /////////////////////////////////////////////
 ////////////////////////////////////////////
 ///////////////////////////////////////////
-
-
-

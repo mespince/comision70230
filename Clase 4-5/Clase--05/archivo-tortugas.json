@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "rafael",
+    "Edad": 12,
+    "gustos": "algunos"
+  },
+  {
+    "nombre": "miguel angel",
+    "Edad": 12,
+    "gustos": "algunos muchos"
+  },
+  {
+    "nombre": "leonardo",
+    "Edad": 12,
+    "gustos": "algunos pocos"
+  },
+  {
+    "nombre": "donatello",
+    "Edad": 12,
+    "gustos": "algunos varios"
+  }
+]
