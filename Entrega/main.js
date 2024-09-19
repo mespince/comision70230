@@ -52,29 +52,21 @@ class ProductManager {
     }
 }
 
-// Testing
-
 const manager = new ProductManager();
 
-// Agregar producto
 manager.addProduct("Producto Prueba", "Esto es una prueba", 200, "sin imagen", "abc123", 25);
 
-// Mostrar todos los productos
 console.log("Todos los productos:", manager.getProducts());
 
 manager.addProduct("Producto Prueba", "Esto es una prueba", 200, "sin imagen", "abc123", 25);
-
 manager.addProduct( "Baldur's Gate 3", "GOTY", 34.99, "ruta/bg3.jpg", "PROD001", 15);
 manager.addProduct( "DLC - Digital Deluxe Edition", "Cosméticos xD", 5.49, "ruta/DDE.jpg", "PROD002",50);
 manager.addProduct( "DLC - Toolkit Data","Pa'cer Mods", 0, "ruta/TD.jpg","PROD003", 20);
 
-
-// Buscar producto por ID
 manager.getProductById(1)
     .then(product => console.log("Producto encontrado:", product))
     .catch(error => console.error("Error:", error));
 
-// Buscar un producto que no existe
 manager.getProductById(99)
     .then(product => console.log("Producto encontrado:", product))
     .catch(error => console.error("Error:", error));
