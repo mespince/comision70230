@@ -1,0 +1,101 @@
+[
+    {
+    "id": 1,
+    "title": "League of Legends",
+    "description": "Cancer",
+    "price": 20,
+    "img": "sin imagen",
+    "code": "abc123",
+    "stock": 33
+    },
+    {
+    "id": 2,
+    "title": "Valorant",
+    "description": "Cancer de Tiros",
+    "price": 150,
+    "img": "sin imagen",
+    "code": "def456",
+    "stock": 30
+    },
+    {
+    "id": 3,
+    "title": "Legends of Runaterra",
+    "description": "Cancer de Cartas",
+    "price": 180,
+    "img": "sin imagen",
+    "code": "ghi789",
+    "stock": 20
+    },
+    {
+    "id": 4,
+    "title": "Teamfight Tactics",
+    "description": "Cancer AutoChess",
+    "price": 350,
+    "img": "sin imagen",
+    "code": "jkl012",
+    "stock": 15
+    },
+    {
+    "id": 5,
+    "title": "A Runaterra Tale: The Ruined King",
+    "description": "Cancer por turnos",
+    "price": 120,
+    "img": "sin imagen",
+    "code": "mno345",
+    "stock": 40
+    },
+    {
+    "id": 6,
+    "title": "A Runaterra Tale: Hextech Mayhem",
+    "description": "Cancer Ritmico",
+    "price": 250,
+    "img": "sin imagen",
+    "code": "pqr678",
+    "stock": 22
+    },
+    {
+    "id": 7,
+    "title": "A runaterra Tale: Mageseeker",
+    "description": "Cancer Hack´n´Slash",
+    "price": 90,
+    "img": "sin imagen",
+    "code": "stu901",
+    "stock": 35
+    },
+    {
+    "id": 8,
+    "title": "A Runaterra Tale: Convergence",
+    "description": "Cancer de Plataformas",
+    "price": 400,
+    "img": "sin imagen",
+    "code": "vwx234",
+    "stock": 18
+    },
+    {
+    "id": 9,
+    "title": "A Runaterra Tale: Song of Nunu",
+    "description": "Cancer de Puzzles",
+    "price": 170,
+    "img": "sin imagen",
+    "code": "yz1234",
+    "stock": 28
+    },
+    {
+    "id": 10,
+    "title": "2XKO",
+    "description": "Cancer de Peleas",
+    "price": 220,
+    "img": "sin imagen",
+    "code": "abc567",
+    "stock": 33
+    },
+    {
+    "id": 11,
+    "title": "Runaterra MMO",
+    "description": "Cancer MMORPG",
+    "price": 5000,
+    "img": "sin imagen",
+    "code": "aaa558",
+    "stock": 300
+    }
+]
