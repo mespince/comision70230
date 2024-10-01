@@ -1,0 +1,84 @@
+<h1>Productos en Tiempo Real</h1>
+
+<ul id="productsList">
+    {{#each products}}
+        <li id="product-{{this.id}}">
+            <strong>{{this.title}}</strong> - {{this.description}} - ${{this.price}}
+            <button onclick="deleteProduct({{this.id}})">Eliminar</button>
+        </li>
+    {{/each}}
+</ul>
+
+<h2>Agregar Nuevo Producto</h2>
+<form id="addProductForm">
+    <input type="text" id="title" placeholder="Título" required>
+    <input type="text" id="description" placeholder="Descripción" required>
+    <input type="text" id="code" placeholder="Código" required>
+    <input type="number" id="price" placeholder="Precio" required>
+    <input type="checkbox" id="status"> Activo
+    <input type="number" id="stock" placeholder="Stock" required>
+    <input type="text" id="category" placeholder="Categoría" required>
+    <input type="text" id="thumbnails" placeholder="Thumbnails (separados por coma)" required>
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<script>
+    const socket = io();
+
+    socket.on('newProduct', (product) => {
+        const productsList = document.getElementById('productsList');
+        const li = document.createElement('li');
+        li.id = `product-${product.id}`;
+        li.innerHTML = `
+            <strong>${product.title}</strong> - ${product.description} - $${product.price}
+            <button onclick="deleteProduct(${product.id})">Eliminar</button>
+        `;
+        productsList.appendChild(li);
+    });
+
+    socket.on('updateProduct', (product) => {
+        const li = document.getElementById(`product-${product.id}`);
+        if (li) {
+            li.innerHTML = `
+                <strong>${product.title}</strong> - ${product.description} - $${product.price}
+                <button onclick="deleteProduct(${product.id})">Eliminar</button>
+            `;
+        }
+    });
+
+    socket.on('deleteProduct', ({ id }) => {
+        const li = document.getElementById(`product-${id}`);
+        if (li) {
+            li.remove();
+        }
+    });
+
+    socket.on('error', (data) => {
+        alert(data.error);
+    });
+
+    const addProductForm = document.getElementById('addProductForm');
+    addProductForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const code = document.getElementById('code').value;
+        const price = parseFloat(document.getElementById('price').value);
+        const status = document.getElementById('status').checked;
+        const stock = parseInt(document.getElementById('stock').value);
+        const category = document.getElementById('category').value;
+        const thumbnailsInput = document.getElementById('thumbnails').value;
+        const thumbnails = thumbnailsInput.split(',').map(s => s.trim());
+
+        socket.emit('addProduct', { title, description, code, price, status, stock, category, thumbnails });
+
+        addProductForm.reset();
+    });
+
+    function deleteProduct(id) {
+        if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+            socket.emit('deleteProduct', id);
+        }
+    }
+</script>
