@@ -10,6 +10,14 @@ const PUERTO = 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+
+//Handlebars
+app.engine("handlebars", exphbs.engine());
+app.set("view engine", "handlebars");
+app.set("views", "./src/views");
+//donde estan los arch
+
+
 //ruta
 app.get,("/", (req, res) => {
     res.send("Hola, Madre estoy programando desde el BackEnd")
